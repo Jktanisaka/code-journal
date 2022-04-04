@@ -8,7 +8,7 @@
 
 img {
   width: 100%;
-  height: 400px;
+  height: 300px;
   border-radius: 4px;
 }
 
@@ -97,6 +97,7 @@ input {
   border-radius: 4px;
   width: 100%;
   height: 30px;
+  outline-color: rgb(75, 35, 115);
 }
 
 textarea {
@@ -105,6 +106,7 @@ textarea {
   background-color: white;
   border: 1px solid #b6b6b6;
   border-radius: 4px;
+  outline-color: rgb(75, 35, 115);
 }
 
 .save-button {
