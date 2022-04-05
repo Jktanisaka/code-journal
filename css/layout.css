@@ -35,4 +35,8 @@
   .stretch-margin {
     margin-top: 0;
   }
+
+  h2 {
+    margin-left: 12px;
+  }
 }
