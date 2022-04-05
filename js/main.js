@@ -25,3 +25,9 @@ function submitForm(event) {
   mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
   data.entries.unshift(entry);
 }
+
+window.addEventListener('beforeunload', storeEntry);
+function storeEntry(event) {
+  var saveEntryJSON = JSON.stringify(data.entries);
+  localStorage.setItem('javascript-local-storage', saveEntryJSON);
+}

@@ -21,35 +21,39 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div data-view="entry-form" class="container purple">
-    <header class="row purple">
-      <h2>Code Journal</h2>
-    </header>
+  <div class="purple">
+    <div data-view="entry-form" class="container purple">
+      <header class="row purple">
+        <h2>Code Journal</h2>
+      </header>
+    </div>
   </div>
-  <div class="container gray">
-    <form action="" method="get">
-      <main class="row gray">
-        <div class="column-full">
-          <h1>New Entry</h1>
-        </div>
-        <div class="column-half flex justify-center fill">
-          <img src="images/placeholder-image-square.jpg" id="mainImage">
-        </div>
-        <div class="column-half justify-center">
-          <label for="title" class="block stretch-margin">Title</label>
-          <input type="text" name="title" id="title" class="inline-block border-style input-font" required>
-          <label for="photo" class="block">Photo URL</label>
-          <input type="text" name="photo" id="photo" class="inline-block border-style input-font" required>
-        </div>
-        <div class="column-full">
-          <label for="notes" class="block">Notes</label>
-          <textarea name="notes" id="notes" class="block input-font" required></textarea>
-        </div>
-        <div class="column-full text-right">
-          <button type="submit" class="save-button">SAVE</button>
-        </div>
-      </main>
-    </form>
+  <div class="gray">
+    <div class="container gray">
+      <form action="" method="get">
+        <main class="row gray">
+          <div class="column-full">
+            <h1>New Entry</h1>
+          </div>
+          <div class="column-half flex justify-center">
+            <img src="images/placeholder-image-square.jpg" id="mainImage" class="fill">
+          </div>
+          <div class="column-half justify-center">
+            <label for="title" class="block stretch-margin">Title</label>
+            <input type="text" name="title" id="title" class="border-style input-font" required>
+            <label for="photo" class="block">Photo URL</label>
+            <input type="text" name="photo" id="photo" class="border-style input-font" required>
+          </div>
+          <div class="column-full">
+            <label for="notes" class="block">Notes</label>
+            <textarea name="notes" id="notes" class="block input-font" required></textarea>
+          </div>
+          <div class="column-full text-right">
+            <button type="submit" class="save-button">SAVE</button>
+          </div>
+        </main>
+      </form>
+    </div>
   </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
