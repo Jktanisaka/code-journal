@@ -59,35 +59,33 @@ function createEntry(entry) {
 var noClass = document.querySelector('#noClass');
 var ul = document.querySelector('#entriesList');
 
-var savedArray = [];
-var savedEntries = localStorage.getItem('javascript-local-storage');
-
-if (savedEntries !== null) {
-  savedArray = JSON.parse(savedEntries);
-}
-var entriesButton = document.querySelector('#aEntries');
-entriesButton.addEventListener('click', viewSwapEntries);
-
 var mainView = document.querySelector('#main');
-var newButton = document.querySelector('#newButton');
 var entriesView = document.querySelector('#entries');
 
-function viewSwapEntries(event) {
-  mainView.setAttribute('class', 'container gray hidden');
-  entriesView.setAttribute('class', 'container gray ');
+var aContainer = document.querySelectorAll('a');
+
+var aEntry = document.querySelector('#aEntries');
+var aNew = document.querySelector('#aNew');
+
+aEntry.addEventListener('click', switchView);
+aNew.addEventListener('click', switchView);
+
+function switchView(event) {
+  for (var i = 0; i < aContainer.length; i++) {
+    if (event.target.matches('#aEntries')) {
+      mainView.setAttribute('class', 'container gray hidden');
+      entriesView.setAttribute('class', 'container gray ');
+    } else if (event.target.matches('#aNew')) {
+      mainView.setAttribute('class', 'container gray');
+      entriesView.setAttribute('class', 'container gray hidden');
+    }
+  }
 }
 
-newButton.addEventListener('click', viewSwapMain);
-function viewSwapMain(event) {
-  mainView.setAttribute('class', 'container gray');
-  entriesView.setAttribute('class', 'container gray hidden');
-}
-
+window.addEventListener('DOMContentLoaded', createEntries);
 function createEntries(event) {
-  for (var i = 0; i < savedArray.length; i++) {
-    JSON.parse(savedEntries);
-    var newEntry = createEntry(savedArray[i]);
+  for (var i = 0; i < data.entries.length; i++) {
+    var newEntry = createEntry(data.entries[i]);
     ul.appendChild(newEntry);
   }
 }
-window.addEventListener('DOMContentLoaded', createEntries);

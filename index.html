@@ -22,7 +22,7 @@
 </head>
 <body>
   <div class="purple">
-    <div data-view="entry-form" class="container purple">
+    <div class="container purple">
       <header class="row purple align-center">
         <h2>Code Journal</h2>
         <a href="#" id="aEntries">Entries</a>
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="gray">
-    <div class="container gray " id="main">
+    <div class="container gray hidden" data-view="entry-form" id="main">
       <form action="" method="get">
         <main class="row gray">
           <div class="column-full">
@@ -55,18 +55,16 @@
         </main>
       </form>
     </div>
-    <div data-view="entries" class="container gray hidden" id="entries">
+    <div data-view="entries" class="container gray" id="entries">
       <div class="row">
         <div class="column-full flex align-center justify-between">
           <h1>Entries</h1>
-          <a href="#" class="new-button text-center flex justify-center align-center" id="newButton">NEW</a>
+          <a href="#" class="new-button text-center flex justify-center align-center" id="aNew">NEW</a>
         </div>
       </div>
       <ul id="entriesList">
-        <li class="row no-entries text-center" id="noClass">
-          <p class="column-full p-no-entry">No entries have been recorded.</p>
-        </li>
       </ul>
+      <p class="column-full p-no-entry no-entries text-center" id="noClass">No entries have been recorded.</p>
     </div>
   </div>
 
