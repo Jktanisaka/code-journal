@@ -23,13 +23,14 @@
 <body>
   <div class="purple">
     <div data-view="entry-form" class="container purple">
-      <header class="row purple">
+      <header class="row purple align-center">
         <h2>Code Journal</h2>
+        <a href="#" id="aEntries">Entries</a>
       </header>
     </div>
   </div>
   <div class="gray">
-    <div class="container gray">
+    <div class="container gray " id="main">
       <form action="" method="get">
         <main class="row gray">
           <div class="column-full">
@@ -49,16 +50,16 @@
             <textarea name="notes" id="notes" class="block input-font" required></textarea>
           </div>
           <div class="column-full text-right">
-            <button type="submit" class="save-button">SAVE</button>
+            <button type="submit" class="save-button hover">SAVE</button>
           </div>
         </main>
       </form>
     </div>
-    <div data-view="entries" class="container gray">
+    <div data-view="entries" class="container gray hidden" id="entries">
       <div class="row">
         <div class="column-full flex align-center justify-between">
           <h1>Entries</h1>
-          <button type="button" class="new-button">NEW</button>
+          <a href="#" class="new-button text-center flex justify-center align-center" id="newButton">NEW</a>
         </div>
       </div>
       <ul id="entriesList">

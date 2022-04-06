@@ -24,6 +24,7 @@ function submitForm(event) {
   form.reset();
   mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
   data.entries.unshift(entry);
+  ul.prepend(createEntry(entry));
 }
 
 function createEntry(entry) {
@@ -57,19 +58,36 @@ function createEntry(entry) {
 }
 var noClass = document.querySelector('#noClass');
 var ul = document.querySelector('#entriesList');
-window.addEventListener('DOMContentLoaded', createEntries);
+
 var savedArray = [];
 var savedEntries = localStorage.getItem('javascript-local-storage');
+
 if (savedEntries !== null) {
   savedArray = JSON.parse(savedEntries);
+}
+var entriesButton = document.querySelector('#aEntries');
+entriesButton.addEventListener('click', viewSwapEntries);
 
+var mainView = document.querySelector('#main');
+var newButton = document.querySelector('#newButton');
+var entriesView = document.querySelector('#entries');
+
+function viewSwapEntries(event) {
+  mainView.setAttribute('class', 'container gray hidden');
+  entriesView.setAttribute('class', 'container gray ');
+}
+
+newButton.addEventListener('click', viewSwapMain);
+function viewSwapMain(event) {
+  mainView.setAttribute('class', 'container gray');
+  entriesView.setAttribute('class', 'container gray hidden');
 }
 
 function createEntries(event) {
-
   for (var i = 0; i < savedArray.length; i++) {
     JSON.parse(savedEntries);
     var newEntry = createEntry(savedArray[i]);
-    ul.prepend(newEntry);
+    ul.appendChild(newEntry);
   }
 }
+window.addEventListener('DOMContentLoaded', createEntries);
