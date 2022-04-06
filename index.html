@@ -22,14 +22,15 @@
 </head>
 <body>
   <div class="purple">
-    <div data-view="entry-form" class="container purple">
-      <header class="row purple">
+    <div class="container purple">
+      <header class="row purple align-center">
         <h2>Code Journal</h2>
+        <a href="#" id="aEntries">Entries</a>
       </header>
     </div>
   </div>
   <div class="gray">
-    <div class="container gray">
+    <div class="container gray hidden" data-view="entry-form" id="main">
       <form action="" method="get">
         <main class="row gray">
           <div class="column-full">
@@ -49,12 +50,24 @@
             <textarea name="notes" id="notes" class="block input-font" required></textarea>
           </div>
           <div class="column-full text-right">
-            <button type="submit" class="save-button">SAVE</button>
+            <button type="submit" class="save-button hover">SAVE</button>
           </div>
         </main>
       </form>
     </div>
+    <div data-view="entries" class="container gray" id="entries">
+      <div class="row">
+        <div class="column-full flex align-center justify-between">
+          <h1>Entries</h1>
+          <a href="#" class="new-button text-center flex justify-center align-center" id="aNew">NEW</a>
+        </div>
+      </div>
+      <ul id="entriesList">
+      </ul>
+      <p class="column-full p-no-entry no-entries text-center" id="noClass">No entries have been recorded.</p>
+    </div>
   </div>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
