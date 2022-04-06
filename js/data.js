@@ -9,11 +9,11 @@ var data = {
 
 window.addEventListener('beforeunload', storeEntry);
 function storeEntry(event) {
-  var saveEntryJSON = JSON.stringify(data.entries);
-  localStorage.setItem('javascript-local-storage', saveEntryJSON);
+  var saveDataJSON = JSON.stringify(data);
+  localStorage.setItem('javascript-local-storage', saveDataJSON);
 }
 
 var storedItems = localStorage.getItem('javascript-local-storage');
 if (storedItems !== null) {
-  data.entries = JSON.parse(storedItems);
+  data = JSON.parse(storedItems);
 }

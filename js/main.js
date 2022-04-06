@@ -30,7 +30,7 @@ function submitForm(event) {
 function createEntry(entry) {
   var li = document.createElement('li');
   li.setAttribute('class', 'row');
-
+  li.setAttribute('data-entry-id', entry.entryId);
   var columnDivHead = document.createElement('div');
   columnDivHead.setAttribute('class', 'column-half flex justify-center');
 
@@ -41,18 +41,30 @@ function createEntry(entry) {
   var columnDivMain = document.createElement('div');
   columnDivMain.setAttribute('class', 'column-half');
 
+  var columnDivFoot = document.createElement('div');
+  columnDivFoot.setAttribute('class', 'column-half');
+
+  var column1 = document.createElement('div');
+  column1.setAttribute('class', 'flex justify-between align-center');
+
   var h2Main = document.createElement('h2');
   h2Main.setAttribute('class', 'h2-stretch h2-entry');
   h2Main.textContent = entry.title;
-  var pMain = document.createElement('p');
-  pMain.textContent = entry.notes;
-  pMain.setAttribute('class', 'p-entry');
+  var iMain = document.createElement('i');
+  iMain.setAttribute('class', 'fas fa-pen hover');
+
+  var pFoot = document.createElement('p');
+  pFoot.textContent = entry.notes;
+  pFoot.setAttribute('class', 'p-entry');
 
   li.appendChild(columnDivHead);
   li.appendChild(columnDivMain);
   columnDivHead.appendChild(imgHead);
-  columnDivMain.appendChild(h2Main);
-  columnDivMain.appendChild(pMain);
+  column1.appendChild(h2Main);
+  column1.appendChild(iMain);
+  columnDivMain.appendChild(column1);
+  columnDivMain.appendChild(pFoot);
+
   noClass.setAttribute('class', 'row no-entries text-center hidden');
   return li;
 }
@@ -78,6 +90,7 @@ function switchView(event) {
     } else if (event.target.matches('#aNew')) {
       mainView.setAttribute('class', 'container gray');
       entriesView.setAttribute('class', 'container gray hidden');
+      h1Entry.textContent = 'New Entry';
     }
   }
 }
@@ -88,4 +101,13 @@ function createEntries(event) {
     var newEntry = createEntry(data.entries[i]);
     ul.appendChild(newEntry);
   }
+}
+var h1Entry = document.querySelector('#h1Entry');
+var entryList = document.querySelector('#entriesList');
+entryList.addEventListener('click', editPress);
+
+function editPress(event) {
+  if (event.target.matches('i')) { mainView.setAttribute('class', 'container gray'); }
+  entriesView.setAttribute('class', 'container gray hidden');
+  h1Entry.textContent = 'Edit Entry';
 }
