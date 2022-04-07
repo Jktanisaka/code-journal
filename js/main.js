@@ -110,4 +110,10 @@ function editPress(event) {
   if (event.target.matches('i')) { mainView.setAttribute('class', 'container gray'); }
   entriesView.setAttribute('class', 'container gray hidden');
   h1Entry.textContent = 'Edit Entry';
+  var liMatch = event.target.closest('.row');
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === parseInt(liMatch.getAttribute('data-entry-id'))) {
+      data.editing = data.entries[i];
+    }
+  }
 }
