@@ -200,7 +200,8 @@ i {
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 70px;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
 .confirm-button {
@@ -230,11 +231,12 @@ i {
   border: 1px solid rgba(182, 182, 182, 1);
   margin-left: 15px;
   margin-right: 15px;
+  letter-spacing: 0.01rem;
 }
 
 .modal-container {
   width: 400px;
-  height: 200px;
+  height: 170px;
   border: 1px solid black;
   border-radius: 4px;
   margin: auto;
@@ -249,10 +251,8 @@ i {
   background-color: rgba(240 240 240);
 }
 
-.background-container {
+.button-container {
   position: relative;
-  width: 100%;
-  height: 100%;
 }
 
 .modal-background {
