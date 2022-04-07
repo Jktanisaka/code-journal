@@ -40,6 +40,8 @@ function submitForm(event) {
         }
       }
     }
+    form.reset();
+    mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     data.editing = null;
     mainView.setAttribute('class', 'container gray hidden');
     entriesView.setAttribute('class', 'container gray ');
@@ -107,6 +109,8 @@ function switchView(event) {
     if (event.target.matches('#aEntries')) {
       mainView.setAttribute('class', 'container gray hidden');
       entriesView.setAttribute('class', 'container gray ');
+      form.reset();
+      mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     } else if (event.target.matches('#aNew')) {
       mainView.setAttribute('class', 'container gray');
       entriesView.setAttribute('class', 'container gray hidden');
@@ -143,11 +147,3 @@ function editPress(event) {
   mainImage.setAttribute('src', data.editing.photo);
   notesInput.value = data.editing.notes;
 }
-
-/*
-for (var i = 0; i < data.entries.length; i++) {
-      if (data.entries[i].entryId === data.editing.entryId) {
-        data.entries[i].title = titleInput.value;
-        data.entries[i].photo = photoInput.value;
-        data.entries[i].notes = notesInput.value;
-        */
