@@ -116,4 +116,8 @@ function editPress(event) {
       data.editing = data.entries[i];
     }
   }
+  titleInput.value = data.editing.title;
+  photoInput.value = data.editing.photo;
+  mainImage.setAttribute('src', data.editing.photo);
+  notesInput.value = data.editing.notes;
 }
