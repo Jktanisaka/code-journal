@@ -134,6 +134,7 @@ textarea {
 
 .p-entry {
   font-family: "Proza Libre", sans-serif;
+  margin-top: 4px;
 }
 
 ul {
@@ -176,4 +177,9 @@ ul {
 
 .hover:hover {
   cursor: pointer;
+}
+
+i {
+  color: rgba(86, 43, 129, 1);
+  font-size: 21px;
 }
