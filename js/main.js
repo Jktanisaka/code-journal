@@ -115,6 +115,7 @@ function switchView(event) {
       mainView.setAttribute('class', 'container gray');
       entriesView.setAttribute('class', 'container gray hidden');
       h1Entry.textContent = 'New Entry';
+      deleteButton.setAttribute('class', 'delete-button hover hidden');
     }
   }
 }
@@ -136,6 +137,7 @@ function editPress(event) {
     entriesView.setAttribute('class', 'container gray hidden');
   }
   h1Entry.textContent = 'Edit Entry';
+  deleteButton.setAttribute('class', 'delete-button hover');
   var liMatch = event.target.closest('.row');
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].entryId === parseInt(liMatch.getAttribute('data-entry-id'))) {
@@ -146,4 +148,11 @@ function editPress(event) {
   photoInput.value = data.editing.photo;
   mainImage.setAttribute('src', data.editing.photo);
   notesInput.value = data.editing.notes;
+}
+
+var deleteButton = document.querySelector('#deleteButton');
+deleteButton.addEventListener('click', deleted);
+
+function deleted(event) {
+
 }

@@ -183,3 +183,13 @@ i {
   color: rgba(86, 43, 129, 1);
   font-size: 21px;
 }
+
+.delete-button {
+  color: rgba(220, 38, 38, 1);
+  font-family: Roboto, sans-serif;
+  border: none;
+  text-decoration: underline;
+  font-size: 14px;
+  line-height: 16px;
+  padding-left: 0;
+}
