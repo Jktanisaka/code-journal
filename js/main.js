@@ -15,16 +15,35 @@ var notesInput = document.querySelector('#notes');
 form.addEventListener('submit', submitForm);
 function submitForm(event) {
   event.preventDefault();
-  var entry = {};
-  entry.title = titleInput.value;
-  entry.photo = photoInput.value;
-  entry.notes = notesInput.value;
-  entry.entryId = data.nextEntryId;
-  data.nextEntryId++;
-  form.reset();
-  mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
-  data.entries.unshift(entry);
-  ul.prepend(createEntry(entry));
+  if (data.editing === null) {
+    var entry = {};
+    entry.title = titleInput.value;
+    entry.photo = photoInput.value;
+    entry.notes = notesInput.value;
+    entry.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    form.reset();
+    mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
+    data.entries.unshift(entry);
+    ul.prepend(createEntry(entry));
+  } else {
+    var liElements = document.querySelectorAll('li');
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.editing.title = titleInput.value;
+        data.editing.photo = photoInput.value;
+        data.editing.notes = notesInput.value;
+        for (var f = 0; f < liElements.length; f++) {
+          if (parseInt(liElements[f].getAttribute('data-entry-id')) === data.editing.entryId) {
+            liElements[f].replaceWith(createEntry(data.editing));
+          }
+        }
+      }
+    }
+    data.editing = null;
+    mainView.setAttribute('class', 'container gray hidden');
+    entriesView.setAttribute('class', 'container gray ');
+  }
 }
 
 function createEntry(entry) {
@@ -68,6 +87,7 @@ function createEntry(entry) {
   noClass.setAttribute('class', 'row no-entries text-center hidden');
   return li;
 }
+
 var noClass = document.querySelector('#noClass');
 var ul = document.querySelector('#entriesList');
 
@@ -107,8 +127,10 @@ var entryList = document.querySelector('#entriesList');
 entryList.addEventListener('click', editPress);
 
 function editPress(event) {
-  if (event.target.matches('i')) { mainView.setAttribute('class', 'container gray'); }
-  entriesView.setAttribute('class', 'container gray hidden');
+  if (event.target.matches('i')) {
+    mainView.setAttribute('class', 'container gray');
+    entriesView.setAttribute('class', 'container gray hidden');
+  }
   h1Entry.textContent = 'Edit Entry';
   var liMatch = event.target.closest('.row');
   for (var i = 0; i < data.entries.length; i++) {
@@ -121,3 +143,11 @@ function editPress(event) {
   mainImage.setAttribute('src', data.editing.photo);
   notesInput.value = data.editing.notes;
 }
+
+/*
+for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].entryId === data.editing.entryId) {
+        data.entries[i].title = titleInput.value;
+        data.entries[i].photo = photoInput.value;
+        data.entries[i].notes = notesInput.value;
+        */
