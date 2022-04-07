@@ -152,7 +152,35 @@ function editPress(event) {
 
 var deleteButton = document.querySelector('#deleteButton');
 deleteButton.addEventListener('click', deleted);
+var confirm = document.querySelector('#confirm');
+var cancel = document.querySelector('#cancel');
+var buttonContainer = document.querySelector('#buttonContainer');
 
 function deleted(event) {
+  buttonContainer.setAttribute('class', ' ');
+}
 
+cancel.addEventListener('click', cancelDelete);
+
+function cancelDelete(event) {
+  buttonContainer.setAttribute('class', 'hidden');
+}
+confirm.addEventListener('click', confirmDelete);
+
+function confirmDelete(event) {
+
+  var liElements = document.querySelectorAll('li');
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      for (var f = 0; f < liElements.length; f++) {
+        if (parseInt(liElements[f].getAttribute('data-entry-id')) === data.editing.entryId) {
+          liElements[f].remove();
+          buttonContainer.setAttribute('class', 'hidden');
+          mainView.setAttribute('class', 'container gray hidden');
+          entriesView.setAttribute('class', 'container gray ');
+          form.reset();
+        }
+      }
+    }
+  }
 }
