@@ -116,6 +116,7 @@ function switchView(event) {
       entriesView.setAttribute('class', 'container gray hidden');
       h1Entry.textContent = 'New Entry';
       deleteButton.setAttribute('class', 'delete-button hover hidden');
+      mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     }
   }
 }
@@ -184,4 +185,7 @@ function confirmDelete(event) {
     }
   }
   data.editing = null;
+  if (data.entries.length === 0) {
+    noClass.setAttribute('class', 'column-full p-no-entry no-entries text-center');
+  }
 }
