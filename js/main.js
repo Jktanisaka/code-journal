@@ -115,6 +115,8 @@ function switchView(event) {
       mainView.setAttribute('class', 'container gray');
       entriesView.setAttribute('class', 'container gray hidden');
       h1Entry.textContent = 'New Entry';
+      deleteButton.setAttribute('class', 'delete-button hover hidden');
+      mainImage.setAttribute('src', 'images/placeholder-image-square.jpg');
     }
   }
 }
@@ -136,6 +138,7 @@ function editPress(event) {
     entriesView.setAttribute('class', 'container gray hidden');
   }
   h1Entry.textContent = 'Edit Entry';
+  deleteButton.setAttribute('class', 'delete-button hover');
   var liMatch = event.target.closest('.row');
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].entryId === parseInt(liMatch.getAttribute('data-entry-id'))) {
@@ -146,4 +149,43 @@ function editPress(event) {
   photoInput.value = data.editing.photo;
   mainImage.setAttribute('src', data.editing.photo);
   notesInput.value = data.editing.notes;
+}
+
+var deleteButton = document.querySelector('#deleteButton');
+deleteButton.addEventListener('click', deleted);
+var confirm = document.querySelector('#confirm');
+var cancel = document.querySelector('#cancel');
+var buttonContainer = document.querySelector('#buttonContainer');
+
+function deleted(event) {
+  buttonContainer.setAttribute('class', ' ');
+}
+
+cancel.addEventListener('click', cancelDelete);
+
+function cancelDelete(event) {
+  buttonContainer.setAttribute('class', 'hidden');
+}
+confirm.addEventListener('click', confirmDelete);
+
+function confirmDelete(event) {
+  var liElements = document.querySelectorAll('li');
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].entryId === data.editing.entryId) {
+      data.entries.splice([i], 1);
+      for (var f = 0; f < liElements.length; f++) {
+        if (parseInt(liElements[f].getAttribute('data-entry-id')) === data.editing.entryId) {
+          liElements[f].remove();
+          buttonContainer.setAttribute('class', 'hidden');
+          mainView.setAttribute('class', 'container gray hidden');
+          entriesView.setAttribute('class', 'container gray ');
+          form.reset();
+        }
+      }
+    }
+  }
+  data.editing = null;
+  if (data.entries.length === 0) {
+    noClass.setAttribute('class', 'column-full p-no-entry no-entries text-center');
+  }
 }

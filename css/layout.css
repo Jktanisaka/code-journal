@@ -35,4 +35,8 @@
   .stretch-margin {
     margin-top: 0;
   }
+
+  .div-stretch {
+    padding: 0;
+  }
 }
